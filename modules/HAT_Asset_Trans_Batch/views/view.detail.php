@@ -28,7 +28,14 @@ class HAT_Asset_Trans_BatchViewDetail extends ViewDetail
 		if(isset($_REQUEST["woop_id"])){
 			echo '<script>var hideButtonFlag="Y";</script>';
 		}
-
+        //Modefy by zeng 20161110
+        $sql = "select id,name from aos_pdf_templates where type='HAT_Asset_Trans_Batch'";
+        $list=$db->query($sql);
+        while ($row = $db->fetchByAssoc($list)){
+            $option.="<option value=".$row['id'].">".$row['name']."</option>";
+        }
+        echo "<select style='display:none' id='pdftemplatehidden' name='pdftemplatehidden' value=''>".$option."</select>";
+        //END Modefy zeng 20161110
         parent::Display();
 
 

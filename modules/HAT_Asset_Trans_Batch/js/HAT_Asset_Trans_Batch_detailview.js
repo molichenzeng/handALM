@@ -155,14 +155,52 @@ function updateStatus(object_id) {
 		});
 	}
 }
-
+ $.getScript("custom/resources/bootstrap3-dialog-master/dist/js/bootstrap-dialog.min.js");
 function GenerateDoc() {
 	if (typeof template_id == 'undefined' || template_id.length == 0) {
 		alert(SUGAR.language.get('app_strings', 'LBL_NO_TEMPLATE'));
 		// warning for no PDF template
 	} else {
 		var record_id = $("input[name*='record']").val();
-		window.location = "index.php?module=HAT_Asset_Trans_Batch&action=GenerateDoc&uid="
-				+ record_id + "&templateID=" + template_id;
+		//Modefy by zeng 20161110
+		var title_txt=SUGAR.language.get('HAT_Asset_Trans_Batch','LBL_PDF_TEMPLATES');
+		$("#pdftemplatehidden").find("option").each(function(){
+			if ($(this).val()==template_id) {
+				$(this).attr("selected",true);
+			}
+		});
+		var list=$("#pdftemplatehidden").html();
+		var html='<select id="pdf_template_list" name="pdf_template_list" onChange="template_id=ChangeTemplateId(this,template_id);">'+
+			list+'</select>';
+		BootstrapDialog.confirm({
+            title: title_txt,
+            message: html,
+            callback:function(result){
+            	if (result) {
+            		window.location = "index.php?module=HAT_Asset_Trans_Batch&action=GenerateDoc&uid="
+					+ record_id + "&templateID=" + template_id;
+            	}else{
+            		//console.log(template_id);
+            	}
+            }
+            /*buttons:[{
+            	label:"取消",
+            	action:function(model){
+					model.close();
+					}
+            	},{
+            	label:"确认",
+            	action:function(){
+					
+            	}
+            }]*/
+        });
+		/**/
 	}
 }
+
+function ChangeTemplateId(btn,template_id){
+	template_id=$(btn).find("option:selected").val();
+	return template_id;
+}
+//END Modefy zeng 20161110
