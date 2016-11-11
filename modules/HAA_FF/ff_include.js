@@ -16,7 +16,7 @@ function triger_setFF(id_value, module_name) {
 
 			 hideAllAttributes(ff_fields)//将所有的Attribute先变空，如果Attribute在FF中有设置，在后续的SetFF过程中会自动显示出来，否则这些扩展字段默认都不显示
              $.each(ff_fields.FF, function () { //针对读取到的FF模板，针对每个设置的条目进行处理
-                setFF(this,module_name)
+                setFF(this)
             })
 
             if (typeof(ff_fields.JS)!="undefined") {
@@ -40,7 +40,7 @@ function htmlUnescape(str){
         .replace(/&amp;/g, '&');
 }
 
-function setFF(FFObj,module_name) {
+function setFF(FFObj) {
 	//设置FlexFORM，基于triger_setFF函数读取到的Ajax结果，动态的调整界面字段
 	//其中FFObj是FF_Fields中定义的需要变化的各个字段及属性
 	//console.log(FFObj);//<-------------------如果你需要调试，可以将这一行的内容输出
@@ -95,8 +95,13 @@ function setFF(FFObj,module_name) {
 			removeFromValidate('EditView',FFObj.field);
 		} else {
 			//必须
+			console.log(FFObj.label);
+			 var field_label=$("#"+FFObj.field+'_label').text();
+			 console.log(field_label);
+            field_label=field_label.replace(":","");
+
 			$("#"+FFObj.field+'_label').append('<span class="required">*</span>');
-			addToValidate('EditView', FFObj.field,'varchar', 'true', SUGAR.language.get(module_name,'LBL_'+FFObj.field.toUpperCase()));
+			addToValidate('EditView', FFObj.field,'varchar', 'true', FFObj.label);
 		}
 
 		//TODO还需要添加字段为值列表、Checkbox等一系列形态
@@ -110,36 +115,6 @@ function setFF(FFObj,module_name) {
 		}
 	}
 }
-//重写check_form方法
-/*function check_form(formname){
-	if(typeof(siw)!='undefined'&&siw&&typeof(siw.selectingSomething)!='undefined'&&siw.selectingSomething)
-		return false;
-	else{
-		var flag=false;
-		$(".required").each(function(){
-			//获取label的ID
-			var label_id="";
-			if($(this).parent().attr("id")){
-				label_id=$(this).parent().attr("id");
-			}
-			//按照_label截取为数组,取第一个,即为字段ID
-			var array=label_id.split("_label");
-			var field_id=array[0];
-			if (array[1]!="") {
-				field_id+=array[1];
-			}
-			var field_label=$(this).parent().text().replace("*","");
-			field_label=field_label.replace(":","");
-			if($("#"+field_id).val()==""){//文本域input、textarea
-				//获取字段对应文本框的ID
-				add_error_style('EditView', field_id, SUGAR.language.get('app_strings', 'ERR_MISSING_REQUIRED_FIELDS')+field_label);
-				flag=true;
-			}
-		});
-		if(!flag)
-			return validate_form(formname,'');
-	}
-}*/
 
 function hideAllAttributes(ff_fields) {
 	//在FF设置之前进行调用，用于将所有的Attribute对象进行隐藏，也就是所有的Attribute默认都是不显示的，除非在FF中进行了设置

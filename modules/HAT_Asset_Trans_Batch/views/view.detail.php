@@ -44,9 +44,24 @@ class HAT_Asset_Trans_BatchViewDetail extends ViewDetail
         //END Modefy zeng 20161110
     parent::Display();
 
+<<<<<<< HEAD
 
         //ff 在DetailView显示之前中进行初始化数据的加载
     if (isset ($this->bean->hat_eventtype_id) && ($this->bean->hat_eventtype_id) != "") {
+=======
+		if(isset($_REQUEST["woop_id"])){
+			echo '<script>var hideButtonFlag="Y";</script>';
+		}
+        //Modefy by zeng 20161110
+        $sql = "select id,name from aos_pdf_templates where type='HAT_Asset_Trans_Batch'";
+        $list=$db->query($sql);
+        while ($row = $db->fetchByAssoc($list)){
+            $option.="<option value=".$row['id'].">".$row['name']."</option>";
+        }
+        echo "<select style='display:none' id='pdftemplatehidden' name='pdftemplatehidden' value=''>".$option."</select>";
+        //END Modefy zeng 20161110
+        parent::Display();
+>>>>>>> 提交合并
 
      $event_type_id = $this->bean->hat_eventtype_id;
      $bean_code = BeanFactory :: getBean('HAT_EventType', $event_type_id);
