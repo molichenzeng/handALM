@@ -35,6 +35,16 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
+        'LBL_EDITVIEW_PANEL2' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+        'LBL_EDITVIEW_PANEL3' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
         'LBL_EDITVIEW_PANEL1' => 
         array (
           'newTab' => false,
@@ -53,6 +63,7 @@ array (
             'name' => 'frameworks',
             'studio' => 'visible',
             'label' => 'LBL_FRAMEWORKS',
+            'customCode' => '{$FRAMEWORK_C}',
           ),
           1 => 
           array (
@@ -72,7 +83,10 @@ array (
             ),
           ),
         ),
-        1 => 
+      ),
+      'lbl_editview_panel2' => 
+      array (
+        0 => 
         array (
           0 => 'name',
           1 => 
@@ -86,7 +100,7 @@ array (
             ),
           ),
         ),
-        2 => 
+        1 => 
         array (
           0 => 
           array (
@@ -99,7 +113,7 @@ array (
             'label' => 'LBL_END_DATE',
           ),
         ),
-        3 => 
+        2 => 
         array (
           0 => 
           array (
@@ -112,7 +126,7 @@ array (
             'label' => 'LBL_INSURED_PERSON',
           ),
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -124,15 +138,75 @@ array (
               'initial_filter' => '&org_type_c_advanced=external',
             ),
           ),
-          1 => 
+          1 => 'description',
+        ),
+      ),
+      'lbl_editview_panel3' => 
+      array (
+        0 => 
+        array (
+          0 => 
           array (
             'name' => 'attribute1',
             'label' => 'LBL_ATTRIBUTE1',
           ),
+          1 => 
+          array (
+            'name' => 'attribute2',
+            'label' => 'LBL_ATTRIBUTE2',
+          ),
         ),
-        5 => 
+        1 => 
         array (
-          0 => 'description',
+          0 => 
+          array (
+            'name' => 'attribute3',
+            'label' => 'LBL_ATTRIBUTE3',
+          ),
+          1 => 
+          array (
+            'name' => 'attribute4',
+            'label' => 'LBL_ATTRIBUTE4',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'attribute5',
+            'label' => 'LBL_ATTRIBUTE5',
+          ),
+          1 => 
+          array (
+            'name' => 'attribute6',
+            'label' => 'LBL_ATTRIBUTE6',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'attribute7',
+            'label' => 'LBL_ATTRIBUTE7',
+          ),
+          1 => 
+          array (
+            'name' => 'attribute8',
+            'label' => 'LBL_ATTRIBUTE8',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'attribute9',
+            'label' => 'LBL_ATTRIBUTE9',
+          ),
+          1 => 
+          array (
+            'name' => 'attribute10',
+            'label' => 'LBL_ATTRIBUTE10',
+          ),
         ),
       ),
       'lbl_editview_panel1' => 

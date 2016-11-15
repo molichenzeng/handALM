@@ -6,6 +6,13 @@ array (
   array (
     'templateMeta' => 
     array (
+      'includes' => 
+      array (
+        0 => 
+        array (
+          'file' => 'custom/modules/HAOS_Insurances/js/HAOS_Insurances_detailview.js',
+        ),
+      ),
       'form' => 
       array (
         'buttons' => 
@@ -38,6 +45,16 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
+        'LBL_DETAILVIEW_PANEL2' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+        'LBL_DETAILVIEW_PANEL1' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
       ),
     ),
     'panels' => 
@@ -59,7 +76,10 @@ array (
             'label' => 'LBL_INSURANCE_TYPE',
           ),
         ),
-        1 => 
+      ),
+      'lbl_detailview_panel2' => 
+      array (
+        0 => 
         array (
           0 => 'name',
           1 => 
@@ -69,7 +89,7 @@ array (
             'label' => 'LBL_INSURANCE_SUBTYPE',
           ),
         ),
-        2 => 
+        1 => 
         array (
           0 => 
           array (
@@ -82,7 +102,7 @@ array (
             'label' => 'LBL_END_DATE',
           ),
         ),
-        3 => 
+        2 => 
         array (
           0 => 
           array (
@@ -95,7 +115,7 @@ array (
             'label' => 'LBL_INSURED_PERSON',
           ),
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -103,15 +123,75 @@ array (
             'studio' => 'visible',
             'label' => 'LBL_FIRST_BENEFICIARY',
           ),
-          1 => 
+          1 => 'description',
+        ),
+      ),
+      'lbl_detailview_panel1' => 
+      array (
+        0 => 
+        array (
+          0 => 
           array (
             'name' => 'attribute1',
             'label' => 'LBL_ATTRIBUTE1',
           ),
+          1 => 
+          array (
+            'name' => 'attribute2',
+            'label' => 'LBL_ATTRIBUTE2',
+          ),
         ),
-        5 => 
+        1 => 
         array (
-          0 => 'description',
+          0 => 
+          array (
+            'name' => 'attribute3',
+            'label' => 'LBL_ATTRIBUTE3',
+          ),
+          1 => 
+          array (
+            'name' => 'attribute4',
+            'label' => 'LBL_ATTRIBUTE4',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'attribute5',
+            'label' => 'LBL_ATTRIBUTE5',
+          ),
+          1 => 
+          array (
+            'name' => 'attribute6',
+            'label' => 'LBL_ATTRIBUTE6',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'attribute7',
+            'label' => 'LBL_ATTRIBUTE7',
+          ),
+          1 => 
+          array (
+            'name' => 'attribute8',
+            'label' => 'LBL_ATTRIBUTE8',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'attribute9',
+            'label' => 'LBL_ATTRIBUTE9',
+          ),
+          1 => 
+          array (
+            'name' => 'attribute10',
+            'label' => 'LBL_ATTRIBUTE10',
+          ),
         ),
       ),
     ),
