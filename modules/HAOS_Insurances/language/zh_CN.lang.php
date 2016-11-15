@@ -101,6 +101,6 @@ $mod_strings = array (
   'LBL_DOC_VERSION' => '版本:',
   'LBL_DOC_NAME' => '文档名称',
   'LBL_FILENAME' => '文件名称',
-  'LBL_NEW_LINE' => '创建',
+  'LBL_NEW_LINE' => '添加附件',
   'LBL_ACTIVE_DATE' =>'启用日期',
 );

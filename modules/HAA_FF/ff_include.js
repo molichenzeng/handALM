@@ -13,7 +13,6 @@ function triger_setFF(id_value, module_name) {
         url: "index.php?to_pdf=true&module=HAA_FF&action=setFF&ff_module="+module_name+"&ff_id="+id_value,
         success: function (result) {
              var ff_fields = jQuery.parseJSON(result);
-
 			 hideAllAttributes(ff_fields)//将所有的Attribute先变空，如果Attribute在FF中有设置，在后续的SetFF过程中会自动显示出来，否则这些扩展字段默认都不显示
              $.each(ff_fields.FF, function () { //针对读取到的FF模板，针对每个设置的条目进行处理
                 setFF(this)
@@ -95,11 +94,6 @@ function setFF(FFObj) {
 			removeFromValidate('EditView',FFObj.field);
 		} else {
 			//必须
-			console.log(FFObj.label);
-			 var field_label=$("#"+FFObj.field+'_label').text();
-			 console.log(field_label);
-            field_label=field_label.replace(":","");
-
 			$("#"+FFObj.field+'_label').append('<span class="required">*</span>');
 			addToValidate('EditView', FFObj.field,'varchar', 'true', FFObj.label);
 		}

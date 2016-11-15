@@ -47,5 +47,44 @@ class HAOS_Insurances extends HAOS_Insurances_sugar {
 		parent::__construct();
 	}
 	
+	function save($check_notify = FALSE){
+		$this->id=parent::save($check_notify);
+		$post_data=$_POST;
+		$key="line_";
+		$line_count = isset($post_data[$key . 'deleted']) ? count($post_data[$key . 'deleted']) : 0;
+        $j = 0;
+        for ($i = 0; $i < $line_count; ++$i) {
+            if ($post_data[$key . 'deleted'][$i] == 1) {
+                $document->mark_deleted($post_data[$key . 'id'][$i]);
+            } else {
+            	$document = new Document();
+                foreach ($document->field_defs as $field_def) {
+                    $field_name = $field_def['name'];
+                    if (isset($post_data[$key . $field_name][$i])) {
+                        $document->$field_name = $post_data[$key . $field_name][$i];
+                    }
+                }
+                $file_arr=preg_split('/[.]/', $_FILES['filename_file']['name'][$i]);
+                $document->file_ext=$file_arr[sizeof($file_arr)-1];
+                $document->file_mime_type=$_FILES['filename_file']['type'][$i];
+                $document->filename=$_FILES['filename_file']['name'][$i];
+	            $document->save($check_notify);
+	            $table='haos_insurances_documents_c';
+	            $relate_values = array('deleted' =>0 ,
+	            	'haos_insurances_documentshaos_insurances_ida'=>$this->id,
+	            	'haos_insurances_documentsdocuments_idb'=>$document->id );
+	            parent::set_relationship($table,$relate_values);
+	        }
+	    }
+	}
+
+
+	function mark_deleted($id)
+	{
+		$document = new Document();
+		$document->mark_lines_deleted($this);
+		$document->mark_relationships_deleted($this);
+		parent::mark_deleted($id);
+	}
 }
 ?>

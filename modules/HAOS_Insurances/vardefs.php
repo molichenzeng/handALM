@@ -577,7 +577,7 @@ $dictionary['HAOS_Insurances'] = array(
         array(
             'name'=>'display_lines',
             'returns'=>'html',
-            'include'=>'modules/Documents/line_items.php'
+            'include'=>'modules/HAOS_Insurances/line_items.php'
             ),
         ),
 
